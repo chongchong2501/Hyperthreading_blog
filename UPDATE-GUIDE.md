@@ -40,23 +40,6 @@ git push origin master
 3. `git merge --continue` 完成合并
 4. `git push origin master`
 
-## 备选方案（方案 B）：专门维护一个 template 分支
-
-仅当你对模板做了**大量定制**、希望"纯净模板"与"我的改动"严格分离时才考虑：
-
-```bash
-# 一次性创建 template 分支（跟踪模板）
-git branch template upstream/master
-
-# 之后每次模板更新：
-git checkout template
-git merge upstream/master      # template 快进到模板最新
-git checkout master
-git merge template             # 把模板更新带入你的工作分支
-```
-
-**不推荐**用于博客场景：维护成本高；且本仓库配置时与模板为 0 提交差异，直接合并即可。
-
 ## 注意事项
 
 1. **更新前保证工作区干净**：`git status` 无未提交改动（有则先 commit 或 stash）
