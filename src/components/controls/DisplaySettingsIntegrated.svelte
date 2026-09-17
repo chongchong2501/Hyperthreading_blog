@@ -8,13 +8,13 @@ import {
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import {
+	generateRandomHue,
 	getDefaultBannerCarouselEnabled,
 	getDefaultBannerTitleEnabled,
 	getDefaultCardBorderEnabled,
 	getDefaultCardFollowThemeEnabled,
 	getDefaultFullscreenLayout,
 	getDefaultGradientEnabled,
-	getDefaultHue,
 	getDefaultOverlayBlur,
 	getDefaultOverlayCardOpacity,
 	getDefaultOverlayOpacity,
@@ -72,7 +72,6 @@ type OverlaySliderItem = {
 type TabKey = "appearance" | "wallpaper" | "effects";
 
 let hue = $state(getHue());
-const defaultHue = getDefaultHue();
 let wallpaperMode: WALLPAPER_MODE = $state(backgroundWallpaper.mode);
 const defaultWallpaperMode = backgroundWallpaper.mode;
 let fullscreenLayout: FullscreenWallpaperLayout = $state(
@@ -319,8 +318,9 @@ let hasVisibleOverlaySlider = $derived(
 	overlaySliderItems.some((item) => item.enabled),
 );
 
-function resetHue() {
-	hue = getDefaultHue();
+// 随机一个主题色相（替代原来的「恢复默认」按钮）
+function randomizeHue() {
+	hue = generateRandomHue();
 	requestAnimationFrame(refreshAllRangeProgress);
 }
 
@@ -688,11 +688,10 @@ $effect(() => {
 		<div class="">
 			<div class="section-title">
 				{i18n(I18nKey.themeColor)}
-				<button aria-label="Reset to Default" class="btn-regular rounded-md active:scale-90"
-						class:opacity-0={hue === defaultHue} class:pointer-events-none={hue === defaultHue}
-						disabled={hue === defaultHue} aria-hidden={hue === defaultHue ? "true" : undefined} onclick={resetHue}>
+				<button aria-label="Random theme color" class="btn-regular rounded-md active:scale-90"
+						onclick={randomizeHue}>
 					<div class="text-(--btn-content)">
-						<Icon icon="fa7-solid:arrow-rotate-left" class="text-[0.75rem]"></Icon>
+						<Icon icon="fa7-solid:shuffle" class="text-[0.75rem]"></Icon>
 					</div>
 				</button>
 				<div id="hueValue" class="transition bg-(--btn-regular-bg) rounded-md flex justify-center

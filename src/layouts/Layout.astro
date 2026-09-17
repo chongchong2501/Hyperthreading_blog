@@ -397,8 +397,16 @@ const ogImageAlt = propsOgImageAlt ?? pageTitle;
         isDark ? darkTheme : lightTheme
       );
 
-      // Load the hue from local storage
-      const hue = localStorage.getItem("hue") || configHue;
+      // 主题色相：每次打开博客随机一个，同一次访问内（含 Swup 站内跳转）保持不变
+      // 随机值写入 sessionStorage，供设置面板读取，避免面板初始化时另生成一个随机值导致不一致
+      let hue = configHue;
+      try {
+        const storedHue = sessionStorage.getItem("hue");
+        hue = storedHue || String(Math.floor(Math.random() * 73) * 5);
+        sessionStorage.setItem("hue", hue);
+      } catch {
+        // sessionStorage 不可用（如隐私模式）时回退到配置色相 configHue
+      }
       document.documentElement.style.setProperty("--hue", hue);
 
       // 设置卡片透明度（全屏透明模式下使用），优先使用用户自定义值

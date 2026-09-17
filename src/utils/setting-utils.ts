@@ -64,25 +64,39 @@ export function resolveTheme(theme: LIGHT_DARK_MODE): LIGHT_DARK_MODE {
 	return theme;
 }
 
+// 主题色相存储键名
+// 用 sessionStorage 而不是 localStorage：每次打开博客都会随机一个色相，
+// 同一次访问内（含 Swup 站内跳转）保持不变。若存进 localStorage，
+// 第一次随机出来的值就会被永久固化，做不到「每次进入博客颜色随机」
+export const HUE_STORAGE_KEY = "hue";
+
+/**
+ * 生成随机主题色相
+ * 与设置面板色相滑块的 step=5 对齐，取值范围 0~360
+ */
+export function generateRandomHue(): number {
+	return Math.floor(Math.random() * 73) * 5;
+}
+
 export function getHue(): number {
-	// 先检查全局对象
-	if (typeof window === "undefined" || !window.localStorage) {
+	// 先检查是否在浏览器环境
+	if (typeof window === "undefined" || !window.sessionStorage) {
 		return getDefaultHue();
 	}
-	const stored = localStorage.getItem("hue");
-	return stored ? Number.parseInt(stored, 10) : getDefaultHue();
+	const stored = sessionStorage.getItem(HUE_STORAGE_KEY);
+	return stored ? Number.parseInt(stored, 10) : generateRandomHue();
 }
 
 export function setHue(hue: number): void {
 	// 先检查是否在浏览器环境
 	if (
 		typeof window === "undefined" ||
-		!window.localStorage ||
+		!window.sessionStorage ||
 		typeof document === "undefined"
 	) {
 		return;
 	}
-	localStorage.setItem("hue", String(hue));
+	sessionStorage.setItem(HUE_STORAGE_KEY, String(hue));
 	const r = document.querySelector(":root") as HTMLElement;
 	if (!r) {
 		return;
