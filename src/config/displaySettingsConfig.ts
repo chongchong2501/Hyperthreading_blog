@@ -21,7 +21,7 @@ export const displaySettingsConfig: DisplaySettingsConfig =
 		// 无需改动本文件：PUBLIC_DISPLAY_SETTINGS=true
 		// 环境变量优先级更高，未设置或取值无法识别时使用这里的值
 		// 生产环境建议默认关闭，只在开发调试环境开启用来预览效果
-		enable: false,
+		enable: true,
 
 		// ── 外观 (Appearance) ──────────────────────────────────
 
@@ -55,7 +55,7 @@ export const displaySettingsConfig: DisplaySettingsConfig =
 		bannerTitleSwitchable: true,
 
 		// 壁纸轮播开关
-		bannerCarouselSwitchable: true,
+		bannerCarouselSwitchable: false,
 
 		// 全屏壁纸/透明覆盖模式参数调节开关
 		// 设为 false 关闭所有滑块，或用对象形式单独控制每个滑块
@@ -68,5 +68,7 @@ export const displaySettingsConfig: DisplaySettingsConfig =
 		// ── 特效 (Effects) ────────────────────────────────────
 
 		// 樱花特效开关
-		sakuraSwitchable: true,
+		// 设为 false 后设置面板不再显示「特效」标签页
+		// （樱花特效本身是否渲染由 effectsConfig.ts 的 enable 控制，当前为 false）
+		sakuraSwitchable: false,
 	});
