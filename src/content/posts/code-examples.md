@@ -1,14 +1,12 @@
 ---
 title: Firefly 代码块示例
-published: 1970-01-03
+published: 1970-01-02
 pinned: false
 description: 在Firefly中使用表达性代码的代码块在 Markdown 中的外观。
 tags: [Markdown, Firefly]
 category: 文章示例
-image: ./images/firefly3.avif
-slug: code-examples
-series: "Firefly 功能示例2"
-seriesOrder: 5
+draft: true
+image: api
 ---
 
 在这里，我们将探索如何使用 [Expressive Code](https://expressive-code.com/) 展示代码块。提供的示例基于官方文档，您可以参考以获取更多详细信息。
@@ -28,32 +26,20 @@ console.log('此代码有语法高亮!')
 #### 渲染 ANSI 转义序列
 
 ```ansi
-[1;4mStandard ANSI colors:[0m
-- Dimmed:     [2;30m Black [2;31m Red [2;32m Green [2;33m Yellow [2;34m Blue [2;35m Magenta [2;36m Cyan [2;37m White [0m
-- Foreground: [30m Black [31m Red [32m Green [33m Yellow [34m Blue [35m Magenta [36m Cyan [37m White [0m
-- Background: [40m Black [41m Red [42m Green [43m Yellow [44m Blue [45m Magenta [46m Cyan [47m White [0m
-- Reversed:   [7;30m Black [7;31m Red [7;32m Green [7;33m Yellow [7;34m Blue [7;35m Magenta [7;36m Cyan [7;37m White [0m
+ANSI colors:
+- Regular: [31mRed[0m [32mGreen[0m [33mYellow[0m [34mBlue[0m [35mMagenta[0m [36mCyan[0m
+- Bold:    [1;31mRed[0m [1;32mGreen[0m [1;33mYellow[0m [1;34mBlue[0m [1;35mMagenta[0m [1;36mCyan[0m
+- Dimmed:  [2;31mRed[0m [2;32mGreen[0m [2;33mYellow[0m [2;34mBlue[0m [2;35mMagenta[0m [2;36mCyan[0m
 
-[1;4m8-bit colors (showing colors 160-171 as an example):[0m
-- Dimmed:     [2;38;5;160m 160 [2;38;5;161m 161 [2;38;5;162m 162 [2;38;5;163m 163 [2;38;5;164m 164 [2;38;5;165m 165 [2;38;5;166m 166 [2;38;5;167m 167 [2;38;5;168m 168 [2;38;5;169m 169 [2;38;5;170m 170 [2;38;5;171m 171 [0m
-- Foreground: [38;5;160m 160 [38;5;161m 161 [38;5;162m 162 [38;5;163m 163 [38;5;164m 164 [38;5;165m 165 [38;5;166m 166 [38;5;167m 167 [38;5;168m 168 [38;5;169m 169 [38;5;170m 170 [38;5;171m 171 [0m
-- Background: [48;5;160m 160 [48;5;161m 161 [48;5;162m 162 [48;5;163m 163 [48;5;164m 164 [48;5;165m 165 [48;5;166m 166 [48;5;167m 167 [48;5;168m 168 [48;5;169m 169 [48;5;170m 170 [48;5;171m 171 [0m
-- Reversed:   [7;38;5;160m 160 [7;38;5;161m 161 [7;38;5;162m 162 [7;38;5;163m 163 [7;38;5;164m 164 [7;38;5;165m 165 [7;38;5;166m 166 [7;38;5;167m 167 [7;38;5;168m 168 [7;38;5;169m 169 [7;38;5;170m 170 [7;38;5;171m 171 [0m
+256 colors (showing colors 160-177):
+[38;5;160m160 [38;5;161m161 [38;5;162m162 [38;5;163m163 [38;5;164m164 [38;5;165m165[0m
+[38;5;166m166 [38;5;167m167 [38;5;168m168 [38;5;169m169 [38;5;170m170 [38;5;171m171[0m
+[38;5;172m172 [38;5;173m173 [38;5;174m174 [38;5;175m175 [38;5;176m176 [38;5;177m177[0m
 
-[1;4m24-bit colors (full RGB):[0m
-- Dimmed:     [2;38;2;34;139;34m ForestGreen - RGB(34,139,34) [2;38;2;102;51;153m RebeccaPurple - RGB(102,51,153) [0m
-- Foreground: [38;2;34;139;34m ForestGreen - RGB(34,139,34) [38;2;102;51;153m RebeccaPurple - RGB(102,51,153) [0m
-- Background: [48;2;34;139;34m ForestGreen - RGB(34,139,34) [48;2;102;51;153m RebeccaPurple - RGB(102,51,153) [0m
-- Reversed:   [7;38;2;34;139;34m ForestGreen - RGB(34,139,34) [7;38;2;102;51;153m RebeccaPurple - RGB(102,51,153) [0m
+Full RGB colors:
+[38;2;34;139;34mForestGreen - RGB(34, 139, 34)[0m
 
-[1;4mFont styles:[0m
-- Default
-- [1mBold[0m
-- [2mDimmed[0m
-- [3mItalic[0m
-- [4mUnderline[0m
-- [7mReversed[0m
-- [9mStrikethrough[0m
+Text formatting: [1mBold[0m [2mDimmed[0m [3mItalic[0m [4mUnderline[0m
 ```
 
 ### 编辑器和终端框架
@@ -325,150 +311,3 @@ console.log('抱歉，你知道我在第几行吗?')
 console.log('来自第5行的问候!')
 console.log('我在第6行')
 ```
-
-## Tab 代码块
-
-由 [rehype-code-group](https://github.com/ITZSHOAIB/rehype-code-group) 提供，语法与 [VitePress 代码组](https://vitepress.dev/guide/markdown#code-groups) 一致：用 `::: code-group labels=[...]` 包裹多个代码块，即可合并成一组标签页。
-
-> [!NOTE]
-> `labels=[...]` 中的标签按顺序对应组内的代码块，用英文逗号分隔；`:::` 与 `code-group` 之间的空格不能省略。
-
-### 基本用法
-
-````markdown
-::: code-group labels=[code.js, code.py, code.html]
-
-```js
-export function greet(name) {
-  return `Hello, ${name}!`;
-}
-```
-
-```py
-def greet(name):
-    return f"Hello, {name}!"
-```
-
-```html
-<p>Hello, world!</p>
-```
-
-:::
-````
-
-渲染效果：
-
-::: code-group labels=[code.js, code.py, code.html]
-
-```js
-export function greet(name) {
-  return `Hello, ${name}!`;
-}
-```
-
-```py
-def greet(name):
-    return f"Hello, {name}!"
-```
-
-```html
-<p>Hello, world!</p>
-```
-
-:::
-
-### 标签中使用 Emoji
-
-标签支持 [emoji 短代码](https://github.com/omnidan/node-emoji#readme)，构建时会自动转换成 emoji：
-
-````markdown
-::: code-group labels=[:package: npm, :package: pnpm, :yarn: yarn]
-````
-
-::: code-group labels=[:package: npm, :package: pnpm, :yarn: yarn]
-
-```bash
-npm create astro@latest
-```
-
-```bash
-pnpm create astro@latest
-```
-
-```bash
-yarn create astro
-```
-
-:::
-
-### 与其他代码块特性组合
-
-组内仍是普通的 Expressive Code 代码块，标题、行号、行标记、折叠、终端框架等特性都可以照常使用。
-
-::: code-group labels=[配置文件, 终端, 折叠]
-
-```js title="astro.config.mjs" showLineNumbers {2} ins={3}
-export default {
-  theme: "firefly",
-  codeGroup: true,
-};
-```
-
-```bash title="部署"
-pnpm build && pnpm preview
-```
-
-```js collapse={1-3}
-// 这三行默认折叠
-import { a } from "a";
-import { b } from "b";
-
-console.log(a, b);
-```
-
-:::
-
-### 不止是代码块
-
-标签页内可以放任意内容，例如文字、列表或图片：
-
-::: code-group labels=[说明, 列表]
-
-这是一段普通的段落内容。
-
-- 列表项一
-- 列表项二
-
-:::
-
-> [!TIP]
-> 标签栏在构建期生成，默认展开第一项；支持鼠标点击与键盘 <kbd>←</kbd> / <kbd>→</kbd> / <kbd>Home</kbd> / <kbd>End</kbd> 切换。
-
-### 在提醒框内使用（MDX 组件）
-
-`::: code-group` 和 `::: tip` 等 Docusaurus 风格提醒框都使用 `:::` 容器语法，而 micromark-directive 规定父子容器的冒号数必须不同，因此 `::: code-group` **无法嵌套在 `::: tip` 等提醒框内**（整块会失效）。
-
-这种情况改用 MDX 组件 [`TabGroup`](@/components/common/TabGroup.svelte)：MDX 组件不经过 `:::` 指令解析，在提醒框内外都能正常使用，也方便日后扩展更多 UI 组件。把文章后缀改为 `.mdx`，从统一入口 [`@/components/firefly-mdx`](@/components/firefly-mdx.ts) 引入（可一次引入多个组件）：
-
-````mdx
-import { TabGroup } from "@/components/firefly-mdx";
-
-:::tip
-
-<TabGroup labels={["test.js", "test.py"]} client:load>
-  ```js
-  console.log(1)
-  ```
-
-  ```py
-  print("hello world")
-  ```
-</TabGroup>
-
-:::
-````
-
-:::tip
-- `labels` 数组给每个代码块声明标签，顺序一一对应
-- 组件用 `client:load` 激活标签切换
-:::
