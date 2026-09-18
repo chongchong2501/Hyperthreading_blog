@@ -55,11 +55,17 @@ jobs:
           name: dist
           path: dist
 
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy dist --project-name=blog-hyperthreading
+          node-version: 22
+
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          npm install -g wrangler
+          wrangler pages deploy dist --project-name=blog-hyperthreading
 
   # ESA Pages 通过阿里云控制台 GitHub 集成自动部署，无需在此脚本中处理
   # 在 ESA 控制台授权 GitHub 后，ESA 会自动监听 push 事件部署 dist 目录
