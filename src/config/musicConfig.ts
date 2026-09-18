@@ -18,7 +18,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	playMode: "list",
 
 	// 是否显启用歌词
-	showLyrics: false,
+	showLyrics: true,
 
 	// Meting API 配置
 	meting: {
@@ -53,6 +53,13 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 				url: "/assets/music/music/梁博-出现又离开.mp3",
 				cover: "/assets/music/cover/出现又离开.jpeg",
 				lrc: "/assets/music/lrc/出现又离开.lrc",
+			},
+			{
+				name: "7 Years",
+				artist: "Lukas Graham",
+				url: "/assets/music/music/Lukas Graham - 7 Years.mp3",
+				cover: "/assets/music/cover/7 years.jpeg",
+				lrc: "/assets/music/lrc/7 Years.lrc",
 			},
 		],
 	},

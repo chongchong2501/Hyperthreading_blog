@@ -65,6 +65,9 @@ const buildPlatform = detectBuildPlatform({
 	unknownBuildPlatform,
 });
 
+// 部署平台（从 siteConfig 读取，不依赖 CI 检测）
+const deployPlatform = siteConfig.deployPlatform;
+
 // 系统信息（平台 + 架构）
 const platformMap: Record<string, string> = {
 	win32: "Windows",
@@ -98,6 +101,15 @@ const mainItems = [
 		label: i18n(I18nKey.siteInfoBuildPlatform),
 		value: buildPlatform,
 	},
+	...(deployPlatform
+		? [
+			{
+				icon: "fa7-brands:cloudflare",
+				label: i18n(I18nKey.siteInfoDeployPlatform),
+				value: deployPlatform,
+			},
+		]
+		: []),
 	{
 		icon: "mdi:clover",
 		label: i18n(I18nKey.siteInfoBlogVersion),
